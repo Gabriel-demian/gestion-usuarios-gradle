@@ -3,12 +3,13 @@ package com.bci.gestionusuarios.service;
 import com.bci.gestionusuarios.entity.UserEntity;
 import com.bci.gestionusuarios.service.impl.TokenServiceImpl;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import java.util.Map;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringBootTest
 public class TokenServiceImplTest {
