@@ -1,6 +1,6 @@
 package com.bci.gestionusuarios.dto;
 
-import com.bci.gestionusuarios.DataMock.UsersMock;
+import com.bci.gestionusuarios.datamock.UsersMock;
 import com.bci.gestionusuarios.entity.UserEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

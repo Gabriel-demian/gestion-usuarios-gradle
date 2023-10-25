@@ -1,4 +1,4 @@
-package com.bci.gestionusuarios.DataMock;
+package com.bci.gestionusuarios.datamock;
 
 import com.bci.gestionusuarios.dto.UserDto;
 import com.bci.gestionusuarios.entity.Phone;
@@ -36,20 +36,6 @@ public class UsersMock {
                 .password("Aa123456789")
                 .phones(createPhoneList())
                 .build();
-    }
-
-    public static Optional<UserDto> createOptionalUser() {
-
-        return Optional.of(UserDto.builder()
-                .created(LocalDateTime.now())
-                .lastLogin(LocalDateTime.now())
-                .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c")
-                .isActive(true)
-                .name("User1")
-                .email("user@email.com")
-                .password("Aa123456789")
-                .phones(createPhoneList())
-                .build());
     }
 
     public static UserEntity createUserEntity() {
