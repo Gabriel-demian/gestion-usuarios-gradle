@@ -4,8 +4,8 @@ import com.bci.gestionusuarios.entity.Phone;
 import com.bci.gestionusuarios.entity.UserEntity;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserMapper {
 
@@ -23,21 +23,14 @@ public class UserMapper {
                 .build();
     }
 
-    public static List<Phone> toPhone(List<Phone> phones){
-        List<Phone> newList = new ArrayList<>();
-
-        phones.forEach(phone -> {
-            newList.add(
-                    Phone.builder()
-                            .number(phone.getNumber())
-                            .cityCode(phone.getCityCode())
-                            .countryCode(phone.getCountryCode())
-                            .build()
-            );
-
-        });
-
-        return newList;
+    public static List<Phone> toPhone(List<Phone> phones) {
+        return phones.stream()
+                .map(phone -> Phone.builder()
+                        .number(phone.getNumber())
+                        .cityCode(phone.getCityCode())
+                        .countryCode(phone.getCountryCode())
+                        .build())
+                .collect(Collectors.toList());
     }
 
     public static UserEntity toEntity(UserDto dto){
