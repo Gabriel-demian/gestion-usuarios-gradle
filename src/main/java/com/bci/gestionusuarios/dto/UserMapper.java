@@ -4,6 +4,7 @@ import com.bci.gestionusuarios.entity.Phone;
 import com.bci.gestionusuarios.entity.UserEntity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,9 @@ public class UserMapper {
     }
 
     public static List<Phone> toPhone(List<Phone> phones) {
+        if (phones == null || phones.isEmpty()) {
+            return new ArrayList<>();
+        }
         return phones.stream()
                 .map(phone -> Phone.builder()
                         .number(phone.getNumber())
