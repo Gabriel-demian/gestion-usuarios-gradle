@@ -20,7 +20,7 @@ public class SecurityConfigurer {
 
 	@Bean
 	public SecurityFilterChain configSecurity(HttpSecurity http) throws Exception {
-		http.csrf().disable(); // why??
+		http.csrf().disable();
 		http.authorizeHttpRequests().requestMatchers(unauthorizedEndpointsMatcher).permitAll()
 				.anyRequest().authenticated();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
