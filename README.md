@@ -7,7 +7,7 @@
 
 ### Sign Up
 
-- **Endpoint:** `POST - http://localhost:8080/users/sign-up`
+- **Endpoint:** `POST - http://localhost:8081/users/sign-up`
 
 **Request Body:**
 
@@ -46,7 +46,7 @@
 
 ### Login
 
-- **Endpoint:** `GET - http://localhost:8080/users/login`
+- **Endpoint:** `GET - http://localhost:8081/users/login`
 
 **Request Headers:**
 
