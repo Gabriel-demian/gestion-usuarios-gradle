@@ -2,7 +2,7 @@
 
   * Java 8
   * SpringBoot 2.7.16
-  * 
+    
 ## Postman Collection
 
 ### Sign Up
