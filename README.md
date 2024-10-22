@@ -6,6 +6,8 @@
 ### How to run:
   * go to the project folder and run the next command in PowerShell.
   * ./gradlew bootRun
+  
+  * Example: gestion-usuarios-gradle> ./gradlew bootRun
 
 ### H2 credentials
 	* url = jdbc:h2:mem:userdb
@@ -24,7 +26,7 @@
 {
   "name": "Ejemplo Usuario",
   "email": "usuario51@example.com",
-  "password": "Aa123456789",
+  "password": "a2asfGfdfdf4",
   "phones": [
     {
       "number": "123456789",
