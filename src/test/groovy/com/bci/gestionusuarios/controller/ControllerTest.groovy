@@ -26,7 +26,7 @@ class ControllerTest extends Specification {
         UserEntity userEntity = new UserEntity()
         userEntity.setName("Name")
         userEntity.email = "test@example.com"
-        userEntity.password = "Aa123456789"
+        userEntity.password = "a2asfGfdfdf4"
 
         def userDto = UserMapper.toDto(userEntity, "token")
         userService.createUser(_) >> userEntity

@@ -21,13 +21,13 @@ public class TokenServiceImpl {
     private static final Key secretKey = new SecretKeySpec(Base64.getEncoder().encode(claveFirmada.getBytes()),
             SignatureAlgorithm.HS256.getJcaName());
 
-
     public String toToken(UserEntity user){
+        long expirationTimeInMs = 600000;
         return Jwts.builder()
                 .setIssuer("gestion-usuarios")
                 .claim(userId, user.getId())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime()+3600000))
+                .setExpiration(new Date(new Date().getTime()+expirationTimeInMs))
                 .signWith(SignatureAlgorithm.HS256,secretKey.getEncoded())
                 .compact();
     }

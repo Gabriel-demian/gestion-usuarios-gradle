@@ -1,5 +1,6 @@
 package com.bci.gestionusuarios.service
 
+import com.bci.gestionusuarios.entity.Phone
 import com.bci.gestionusuarios.entity.UserEntity
 import com.bci.gestionusuarios.exception.InvalidPasswordException
 import com.bci.gestionusuarios.exception.UserAlreadyExistException
@@ -23,15 +24,20 @@ class ServiceTest extends Specification{
         userRepository = Stub(UserRepository)
         passwordEncoder = Stub(PasswordEncoder)
         userService = new UserServiceImpl(userRepository, passwordEncoder)
-
     }
 
     def "createUser should create a new user"() {
         given:
+        Phone phone1 = new Phone(number: 123456789L, cityCode: 123, countryCode: "+3")
+        Phone phone2 = new Phone(number: 987654321L, cityCode: 456, countryCode: "+12")
+
+        List<Phone> phones = [phone1, phone2]
+
         UserEntity user = new UserEntity()
         user.setName("Name")
         user.email = "test@example.com"
         user.password = "password"
+        user.phones = phones;
 
         userRepository.save(_)>> user
 
@@ -45,7 +51,12 @@ class ServiceTest extends Specification{
 
     def "Test getUserById method"() {
         given:
-        UserEntity user = new UserEntity(id: UUID.randomUUID(), email: "test@example.com", password: "password")
+        Phone phone1 = new Phone(number: 123456789L, cityCode: 123, countryCode: "+3")
+        Phone phone2 = new Phone(number: 987654321L, cityCode: 456, countryCode: "+12")
+
+        List<Phone> phones = [phone1, phone2]
+
+        UserEntity user = new UserEntity(id: UUID.randomUUID(), email: "test@example.com", password: "password", phones: phones)
         userRepository.findById(_) >> Optional.of(user)
         userRepository.save(_)>> user
 
@@ -58,7 +69,11 @@ class ServiceTest extends Specification{
 
     def "Test createUser method - duplicate user"() {
         given:
-        UserEntity user = new UserEntity(email: "test@example.com", password: "password")
+        Phone phone1 = new Phone(number: 123456789L, cityCode: 123, countryCode: "+3")
+        Phone phone2 = new Phone(number: 987654321L, cityCode: 456, countryCode: "+12")
+
+        List<Phone> phones = [phone1, phone2]
+        UserEntity user = new UserEntity(email: "test@example.com", password: "password", phones: phones)
 
         userRepository.existsByEmail(_) >> { throw new UserAlreadyExistException("User", "email", user.email) }
 
@@ -72,7 +87,14 @@ class ServiceTest extends Specification{
     def "Test loadUserByUsername method"() {
         given:
         UUID userId = UUID.randomUUID()
-        UserEntity user = new UserEntity(id: userId, email: "test@example.com", password: "password")
+
+        Phone phone1 = new Phone(number: 123456789L, cityCode: 123, countryCode: "+3")
+        Phone phone2 = new Phone(number: 987654321L, cityCode: 456, countryCode: "+12")
+
+        List<Phone> phones = [phone1, phone2]
+
+        UserEntity user = new UserEntity(id: userId, email: "test@example.com", password: "password", phones: phones)
+
         userRepository.findById(userId) >> Optional.of(user)
 
         when:

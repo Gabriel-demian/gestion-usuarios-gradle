@@ -31,10 +31,8 @@ public class AuthFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        //is someone already authenticated?
         if(SecurityContextHolder.getContext().getAuthentication() == null) {
 
-            //check if the request has an  authorization header to further check if an
             final String authorizationHeader = request.getHeader(AUTHORIZATION_HEADER);
 
             if(authorizationHeader != null && authorizationHeader.toUpperCase().startsWith(AUTHORIZATION_KEY)) {
@@ -46,7 +44,8 @@ public class AuthFilter extends OncePerRequestFilter {
                 if (userId != null) {
                     UserDetails userDetails = this.userDetailsService.loadUserByUsername(userId.toString());
 
-                    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                            new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
                 }

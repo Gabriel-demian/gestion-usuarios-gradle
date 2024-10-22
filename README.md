@@ -1,8 +1,17 @@
 # gestion-usuarios
 
-  * Java 8
+  * Java 11
   * SpringBoot 2.7.16
     
+### How to run:
+  * go to the project folder and run the next command in PowerShell.
+  * ./gradlew bootRun
+
+### H2 credentials
+	* url = jdbc:h2:mem:userdb
+	* username = sa
+	* password = password
+	
 ## Postman Collection
 
 ### Sign Up

@@ -15,23 +15,22 @@ import javax.servlet.http.HttpServletRequest;
 @AllArgsConstructor
 public class SecurityConfigurer {
 
-
     private AuthFilter authFilter;
 
 	@Bean
 	public SecurityFilterChain configSecurity(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-		http.authorizeHttpRequests().requestMatchers(unauthorizedEndpointsMatcher).permitAll()
+		http.headers().frameOptions().disable();
+		http.authorizeRequests()
+				.requestMatchers(unauthorizedEndpointsMatcher).permitAll()
 				.anyRequest().authenticated();
+
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
+
 		return http.build();
 	}
 
-	private static RequestMatcher unauthorizedEndpointsMatcher = new RequestMatcher() {
-		@Override
-		public boolean matches(HttpServletRequest request) {
-			return request.getRequestURI().contains("/sign-up");
-		}
-	};
+
+	private static final RequestMatcher unauthorizedEndpointsMatcher = request -> request.getRequestURI().contains("/sign-up") || request.getRequestURI().contains("/h2-console");
 }
