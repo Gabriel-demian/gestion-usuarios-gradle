@@ -94,3 +94,14 @@
     "active": true
 }
 ```
+
+## Diagramas
+### Sign Up
+![image](https://github.com/Gabriel-demian/gestion-usuarios-gradle/blob/98aec6497ee883be1d8092ce7b5268513efda961/sign-up.png)
+
+### Login
+![image](https://github.com/Gabriel-demian/gestion-usuarios-gradle/blob/98aec6497ee883be1d8092ce7b5268513efda961/login.png)
+
+##
+
+
