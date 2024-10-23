@@ -10,6 +10,8 @@ import com.bci.gestionusuarios.service.UserService;
 import com.bci.gestionusuarios.service.impl.TokenServiceImpl;
 import com.bci.gestionusuarios.util.Validation;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -24,7 +26,7 @@ public class UserController {
     private TokenServiceImpl tokenService;
 
     @PostMapping("/sign-up")
-    public ResponseDto signUp(@RequestBody UserDto user) {
+    public ResponseEntity<ResponseDto> signUp(@RequestBody UserDto user) {
         if(!Validation.isEmailValid(user.getEmail())){
             throw new InvalidEmailFormatException("User", "email", user.getEmail());
         }
@@ -35,13 +37,18 @@ public class UserController {
 
         UserEntity newUser = userService.createUser(UserMapper.toEntity(user));
 
-        return UserMapper.toResponse(newUser, tokenService.toToken(newUser));
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(UserMapper.toResponse(newUser, tokenService.toToken(newUser)));
     }
 
     @GetMapping("/login")
-    public UserDto login(Principal principal) {
+    public ResponseEntity<UserDto> login(Principal principal) {
         UserEntity user = userService.getUserById(UUID.fromString(principal.getName()));
-        return UserMapper.toDto(user, tokenService.toToken(user));
+
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body(UserMapper.toDto(user, tokenService.toToken(user)));
     }
 
 }
