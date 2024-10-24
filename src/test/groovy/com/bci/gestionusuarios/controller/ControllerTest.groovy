@@ -8,6 +8,7 @@ import com.bci.gestionusuarios.service.UserService
 import com.bci.gestionusuarios.service.impl.TokenServiceImpl
 import org.springframework.http.ResponseEntity
 import spock.lang.Specification
+
 import java.security.Principal
 
 class ControllerTest extends Specification {

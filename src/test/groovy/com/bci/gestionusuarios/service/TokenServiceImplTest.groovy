@@ -2,7 +2,6 @@ package com.bci.gestionusuarios.service
 
 import com.bci.gestionusuarios.entity.UserEntity
 import com.bci.gestionusuarios.service.impl.TokenServiceImpl
-
 import spock.lang.Specification
 import spock.lang.Title
 

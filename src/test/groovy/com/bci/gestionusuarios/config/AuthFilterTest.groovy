@@ -1,10 +1,10 @@
 package com.bci.gestionusuarios.config
 
 import com.bci.gestionusuarios.service.impl.TokenServiceImpl
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import spock.lang.Specification
 import spock.lang.Title
 

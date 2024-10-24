@@ -27,24 +27,6 @@ repositories {
 test {
 	useJUnitPlatform()
 }
-/**
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.3'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-	implementation 'org.modelmapper:modelmapper:3.1.0'
-
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
-
-	testImplementation group: 'org.spockframework', name: 'spock-core', version: '2.1-groovy-3.0'
-	testImplementation group: 'org.spockframework', name: 'spock-spring', version: '2.1-groovy-3.0'
-}
-*/
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.3'
@@ -59,16 +41,11 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 
-
-	// Spring Boot Test dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 
-
-	// Spock dependencies
 	testImplementation 'org.spockframework:spock-core:2.1-groovy-3.0'
 	testImplementation 'org.spockframework:spock-spring:2.1-groovy-3.0'
 
-	// Optional: if using Groovy 3.x or above
 	testImplementation 'org.codehaus.groovy:groovy-all:3.0.9'
 }
