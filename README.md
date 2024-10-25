@@ -102,6 +102,10 @@
 ### Login
 ![image](https://github.com/Gabriel-demian/gestion-usuarios-gradle/blob/98aec6497ee883be1d8092ce7b5268513efda961/login.png)
 
+### DB
+![image](https://github.com/Gabriel-demian/gestion-usuarios-gradle/blob/f66cf8d1b87ee5a2e5faa8dbeb60b86f88074f33/diagrama.png)
+
 ##
+
 
 
